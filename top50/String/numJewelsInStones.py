@@ -1,8 +1,16 @@
 class Solution:
-    def numJewelsInStones(self, J, S):
-        Jset = set(J)
-        return sum(s in Jset for s in S)
+
+    def solve1(self, J, S):
+        jewels = 0
+        for i in J:
+            jewels += S.count(i)  
+        return jewels
+
+    def solve2(self, J: str, S: str) -> int:
+        jSet = set(J)
+        return sum(s in jSet for s in S)
 
 
 if __name__ == "__main__":
-    print(Solution().numJewelsInStones('aA', 'aAAbbbb'))
+    print(Solution().solve1('aA', 'aAAbbbb'))
+    print(Solution().solve2('aA', 'aAAbbbb'))
