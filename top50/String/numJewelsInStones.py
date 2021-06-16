@@ -1,10 +1,10 @@
 class Solution:
 
     def solve1(self, J, S):
-        jewels = 0
+        count = 0
         for i in J:
-            jewels += S.count(i)  
-        return jewels
+            count += S.count(i)
+        return count
 
     def solve2(self, J: str, S: str) -> int:
         jSet = set(J)
