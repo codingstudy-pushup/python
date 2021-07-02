@@ -6,10 +6,10 @@ class Solution:
     def solve_1(self, height: List[int]) -> int:
 
         leng = len(height)
-        leftMax = [0] * len(leng)
-        rightMax = [0] * len(leng)
+        leftMax = [0] * leng
+        rightMax = [0] * leng
 
-        Water = [0] * len(leng)
+        Water = [0] * leng
 
         maxLeft = 0
         maxRight = 0
@@ -37,4 +37,4 @@ class Solution:
         return ans
 
 
-print(Solution().trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(Solution().solve_1([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
