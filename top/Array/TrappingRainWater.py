@@ -2,10 +2,9 @@ import collections
 from typing import List
 
 
-class Solution(object):
+class Solution:
+    def solve_1(self, height: List[int]) -> int:
 
-    def solve(self, height):
-        
         leng = len(height)
         leftMax = [0] * len(leng)
         rightMax = [0] * len(leng)
@@ -28,7 +27,7 @@ class Solution(object):
 
         return sum(Water)
 
-    def solve2(self, height: List[int]) -> int:
+    def solve_2(self, height: List[int]) -> int:
         ans = 0
         for i in range(1, len(height) - 1):
             maxLeft = max(height[:i])
@@ -38,4 +37,4 @@ class Solution(object):
         return ans
 
 
-print(Solution().solve([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(Solution().trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
