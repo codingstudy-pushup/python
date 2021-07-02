@@ -4,37 +4,45 @@ from typing import List
 
 class Solution:
     def solve_1(self, height: List[int]) -> int:
-
+        # 1 ds
         leng = len(height)
-        leftMax = [0] * leng
-        rightMax = [0] * leng
+        maxLeft = [0] * leng
+        maxRight = [0] * leng
+        water = [0] * leng
+        maxLeftVal =0
+        maxRightVal = 0
 
-        Water = [0] * leng
+        # 2
+        for i in range(leng):
+            maxLeftVal=max(maxLeftVal, height[i])
+            maxLeft[i] =maxLeftVal
 
-        maxLeft = 0
-        maxRight = 0
+        for i in maxLeft:
+            print(i, end=' ')
 
-        for index in range(leng):
-            maxLeft = max(maxLeft, height[index])
-            leftMax[index] = maxLeft
+        for i in range(leng-1, -1, -1):
+            maxRightVal = max(maxRightVal, height[i])
+            maxRight[i] = maxRightVal
+        print('end')
+        for i in maxRight:
+            print(i, end=' ')
 
-        for index in range(leng - 1, -1, -1):
-            maxRight = max(maxRight, height[index])
-            rightMax[index] = maxRight
-
-        for index in range(leng):
-            Water[index] = min(leftMax[index], rightMax[index]) - height[index]
-
-        return sum(Water)
+        for i in range(leng):
+            water[i]= min(maxLeft[i],maxRight[i])-height[i]
+        print('end')
+        return sum(water)
 
     def solve_2(self, height: List[int]) -> int:
-        ans = 0
+        res = 0
         for i in range(1, len(height) - 1):
             maxLeft = max(height[:i])
             maxRight = max(height[i + 1:])
-            potential = min(maxLeft, maxRight) - height[i]
-            ans += max(0, potential)
-        return ans
+            print(i,'', maxLeft,'', maxRight)
+            minVal = min(maxLeft, maxRight) - height[i]
+            res += max(0, minVal)
+        return res
+
 
 
 print(Solution().solve_1([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(Solution().solve_2([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
