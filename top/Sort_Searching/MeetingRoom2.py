@@ -4,7 +4,19 @@ from typing import List
 
 class Solution:
 
-    def solve_1(self, intervals: List[List[int]]) -> int:
+    def solve_1(self, intervals):
+        intervals.sort(key=lambda x: x[0])
+        heap = []
+        for i in intervals:
+            if heap and heap[0] <= i[0]:
+                # pop, push
+                heapq.heapreplace(heap, i[1])
+            else:
+                # push
+                heapq.heappush(heap, i[1])
+        return len(heap)
+
+    def solve_2(self, intervals: List[List[int]]) -> int:
         h = []
         sort = sorted(intervals)
         for i in sort:
@@ -16,7 +28,7 @@ class Solution:
                 heapq.heapreplace(h, i[1])
         return len(h)
 
-    def solve_2(self, intervals: List[List[int]]) -> int:
+    def solve_3(self, intervals: List[List[int]]) -> int:
         if not intervals:
             return 0
         intervals.sort(key=lambda x: x[0])
