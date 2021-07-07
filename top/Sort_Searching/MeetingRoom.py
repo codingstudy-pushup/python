@@ -6,7 +6,7 @@ class Solution:
     def solve_1(self, intervals: List[List[int]]) -> bool:
         intervals.sort()
         for i in range(len(intervals) - 1):
-            if intervals[i + 1][0] < intervals[i][1]:
+            if intervals[i][1] > intervals[i + 1][0]:
                 return False
         return True
 
@@ -18,5 +18,5 @@ class Solution:
         return True
 
 
-print(Solution().solve_1([[0, 30], [5, 10], [15, 20]]))
-print(Solution().solve_2([[0, 30], [5, 10], [15, 20]]))
+print(Solution().solve_1([[0, 30], [5, 10], [16, 20]]))
+print(Solution().solve_2([[0, 30], [5, 10], [16, 20]]))
