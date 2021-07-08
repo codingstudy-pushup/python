@@ -3,26 +3,24 @@ import collections
 
 class Solution:
     def solve(self, s: str) -> int:
-        dic = collections.defaultdict(int)
-        counter = 0
+        d = collections.defaultdict(int)
         left, right = 0, 0
+        counter = 0
         res = 0
+
         while right < len(s):
             ch = s[right]
-            dic[ch] += 1
-            if dic[ch] == 2:
+            d[ch] += 1
+            if d[ch] == 1:
                 counter += 1
-            else:
-                # print(l, r, r-l + 1)
-                res = max(res, right - left + 1)
             right += 1
-            while counter == 1:
+            if counter <= 2:
+                res = max(res, right - left)
+            while counter > 2:
                 ch = s[left]
-                dic[ch] -= 1
-                if dic[ch] == 1:
+                d[ch] -= 1
+                if d[ch] == 0:
                     counter -= 1
                 left += 1
         return res
-
-
-print(Solution().solve("pwwkew"))
+print(Solution().solve("ccaabbb"))
