@@ -15,4 +15,4 @@ class Solution:
 
 
 
-print(Solution().solve_1([[1,3],[2,6],[8,10],[15,18]]))
+print(Solution().solve_1([[1,4],[2,6],[8,10],[15,18]]))
