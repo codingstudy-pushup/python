@@ -1,0 +1,49 @@
+import heapq
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+class Solution(object):
+
+    def solve(self, lists):
+        q, h = len(lists), []
+        for i in range(q):
+            if lists[i]:
+                heapq.heappush(h, (lists[i].val, i, lists[i]))
+
+        rhead = rtail = ListNode(0)
+
+        while h:
+            i, n = heapq.heappop(h)[1:]
+            rtail.next = n
+            rtail = rtail.next
+            if n.next:
+                heapq.heappush(h, (n.next.val, i, n.next))
+
+        return rhead.next
+
+    def printListNode(self, recv):
+        while recv:
+            print('recv.val:', recv.val)
+            recv = recv.next
+
+if __name__ == "__main__":
+    l1 = ListNode(1)
+    l1.next = ListNode(4)
+    l1.next.next = ListNode(5)
+
+    l2 = ListNode(1)
+    l2.next = ListNode(3)
+    l2.next.next = ListNode(4)
+
+    l3 = ListNode(2)
+    l3.next = ListNode(7)
+
+    recv = Solution().solve([l1, l2, l3])
+    Solution().printListNode(recv)
+
+
