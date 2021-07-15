@@ -1,4 +1,5 @@
 import heapq
+from typing import List
 
 
 class ListNode:
@@ -9,7 +10,7 @@ class ListNode:
 
 class Solution(object):
 
-    def solve(self, lists):
+    def solve(self, lists: List[ListNode]) -> ListNode:
         q, h = len(lists), []
         for i in range(q):
             if lists[i]:
