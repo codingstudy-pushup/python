@@ -10,20 +10,24 @@ class ListNode:
 
 class Solution(object):
 
+
     def solve(self, lists: List[ListNode]) -> ListNode:
-        q, h = len(lists), []
-        for i in range(q):
+        listLen = len(lists)
+        minHeap = []
+        for i in range(listLen):
             if lists[i]:
-                heapq.heappush(h, (lists[i].val, i, lists[i]))
+                heapq.heappush(minHeap, (lists[i].val, i, lists[i]))
 
         head = ListNode(0)
         res = head
-        while h:
-            i, n = heapq.heappop(h)[1:]
-            res.next = n
+        while minHeap:
+            i, node = heapq.heappop(minHeap)[1:]
+            print("i:", i)
+            print("node:", node.val)
+            res.next = node
             res = res.next
-            if n.next:
-                heapq.heappush(h, (n.next.val, i, n.next))
+            if node.next:
+                heapq.heappush(minHeap, (node.next.val, i, node.next))
 
         return head.next
 
