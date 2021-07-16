@@ -16,16 +16,16 @@ class Solution(object):
             if lists[i]:
                 heapq.heappush(h, (lists[i].val, i, lists[i]))
 
-        rhead = rtail = ListNode(0)
-
+        head = ListNode(0)
+        res = head
         while h:
             i, n = heapq.heappop(h)[1:]
-            rtail.next = n
-            rtail = rtail.next
+            res.next = n
+            res = res.next
             if n.next:
                 heapq.heappush(h, (n.next.val, i, n.next))
 
-        return rhead.next
+        return head.next
 
     def printListNode(self, recv):
         while recv:
