@@ -4,14 +4,15 @@ class ListNode:
         self.next = None
 
 class Solution:
-
-    def solve(self, head):
+    def(self, head: ListNode) -> ListNode:
         prev = None
-        while head:
-            curr = head
-            head = head.next
+        curr = head
+
+        while curr:
+            next = curr.next
             curr.next = prev
             prev = curr
+            curr = next
         return prev
 
     def printListNode(self, recv):
