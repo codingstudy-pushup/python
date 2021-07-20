@@ -6,14 +6,12 @@ class ListNode:
 class Solution:
 
     def solve(self, head):
-        # O(n) Time / O(1) Space
         prev = None
-        cur = head
-        while cur:
-            tmp_next = cur.next
-            cur.next = prev
-            prev = cur
-            cur = tmp_next
+        while head:
+            curr = head
+            head = head.next
+            curr.next = prev
+            prev = curr
         return prev
 
     def printListNode(self, recv):
@@ -25,5 +23,6 @@ if __name__ == "__main__":
     head = ListNode(1)
     head.next = ListNode(2)
     head.next.next = ListNode(3)
+    Solution().printListNode(head)
     recv = Solution().solve(head)
     Solution().printListNode(recv)
