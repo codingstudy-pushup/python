@@ -30,10 +30,15 @@ class Solution:
 
         from collections import Counter
         s_count = Counter(s)
-        for x in s_count:
-            if s_count[x] == 1:
-                return s.index(x)
+        # for ch in s_count:
+        #     if s_count[ch] == 1:
+        #         return s.index(ch)
+        for key, value in s_count.items():
+            print(key, ":", value)
+            if value==1 :
+                return s.index(key)
         return -1
 
 print(Solution().solve1('lovelo'))
+print(Solution().solve2('lovelo'))
 print(Solution().solve3('lovelo'))
